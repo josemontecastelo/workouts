@@ -11,13 +11,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.josealfonsomora.workouts.data.workouts
 
 @Composable
 fun DailyWorkoutScreen(
     modifier: Modifier = Modifier,
+    viewModel: DailyWorkoutViewModel = hiltViewModel(),
     navigateToPlanner: (Int) -> Unit,
 ) {
+
     LazyVerticalGrid(
         modifier = modifier, columns = GridCells.Fixed(3)
     ) {

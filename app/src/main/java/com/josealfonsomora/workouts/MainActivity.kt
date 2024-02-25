@@ -53,7 +53,9 @@ import com.josealfonsomora.workouts.features.settings.SETTINGS_ROUTE
 import com.josealfonsomora.workouts.features.settings.navigateToSettings
 import com.josealfonsomora.workouts.features.settings.settingsScreen
 import com.josealfonsomora.workouts.ui.theme.WorkoutsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
