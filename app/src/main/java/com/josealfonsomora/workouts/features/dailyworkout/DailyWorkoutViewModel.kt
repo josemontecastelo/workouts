@@ -20,6 +20,7 @@ class DailyWorkoutViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
+            dailyWorkoutsRepository.setupDailyWorkoutsDB()
             _state.value = DailyWorkoutState.Loaded(
                 workouts = dailyWorkoutsRepository.getDailyWorkouts()
                     .map { workout -> workout.toWorkoutUI() })
