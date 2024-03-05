@@ -8,6 +8,7 @@ data class Workout(
     val workoutType: WorkoutType,
     val description: String,
     val muscles: List<Muscle>,
+    val image: String = "cardio",
 )
 
 fun Workout.toWorkoutUI(): WorkoutUI {
