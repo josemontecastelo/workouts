@@ -3,4 +3,11 @@
     <string name="daily_workout_title">Workout</string>
     <string name="planner_title">Planner</string>
     <string name="settings_title">Settings</string>
+    <string name="lunes">Lunes</string>
+    <string name="martes">Martes</string>
+    <string name="miercoles">Miércoles</string>
+    <string name="jueves">Jueves</string>
+    <string name="viernes">Viernes</string>
+    <string name="sabado">Sábado</string>
+    <string name="domingo">Domingo</string>
 </resources>

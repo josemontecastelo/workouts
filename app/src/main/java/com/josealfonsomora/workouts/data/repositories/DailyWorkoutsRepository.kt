@@ -1,12 +1,14 @@
 package com.josealfonsomora.workouts.data.repositories
 
 import android.content.ContentValues
+import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
 import com.josealfonsomora.workouts.data.sources.room.WorkoutDao
 import com.josealfonsomora.workouts.data.sources.room.WorkoutEntity
 import com.josealfonsomora.workouts.data.sources.room.toWorkout
 import com.josealfonsomora.workouts.data.sources.sqlite.WorkoutSqliteContract.WorkoutEntry
+import com.josealfonsomora.workouts.di.WorkoutsSharedPreferences
 import com.josealfonsomora.workouts.domain.Muscle
 import com.josealfonsomora.workouts.domain.Workout
 import com.josealfonsomora.workouts.domain.WorkoutType
@@ -21,7 +23,8 @@ import javax.inject.Inject
 
 class DailyWorkoutsRepository @Inject constructor(
     private val workoutsDb: SQLiteDatabase,
-    private val workoutDao: WorkoutDao
+    private val workoutDao: WorkoutDao,
+    @WorkoutsSharedPreferences private val workoutsSharedPreferences: SharedPreferences,
 ) {
 
     suspend fun setupDailyWorkoutsDB() {
@@ -48,8 +51,7 @@ class DailyWorkoutsRepository @Inject constructor(
                     muscles = listOf(Muscle.QUADS),
                 )
 
-                workoutDao
-                    .insertWorkout(workoutEntity, workoutEntity2, workoutEntity3)
+                workoutDao.insertWorkout(workoutEntity, workoutEntity2, workoutEntity3)
             }
         }
         withContext(IO) {
@@ -177,9 +179,9 @@ class DailyWorkoutsRepository @Inject constructor(
         }
     }
 
-    suspend fun addRandomWorkouts(){
+    suspend fun addRandomWorkouts() {
         withContext(IO) {
-            (1..10).forEach {id ->
+            (1..10).forEach { id ->
                 delay(1000)
                 val workoutEntity = WorkoutEntity(
                     name = "TRX $id",
